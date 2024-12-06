@@ -11,10 +11,10 @@ export const getUserByEmail = async (email: string) => {
                 eq(Users.userEmail, email)
             );
 
-        return result[0];
+        return result;
     } catch (error: any) {
         console.error("Error fetching users:", error);
-        return []
+        throw new error("Error fetching users:", error)
     }
 };
 
@@ -34,7 +34,23 @@ export const addUser = async (user: any) => {
                 credit: Users.credit,
             });
         return result[0]
-    } catch (error) {
-        return []
+    } catch (error: any) {
+        throw new error("Error fetching users:", error)
     }
+}
+
+export const updateUserCredit = async (credit: any, userDetail: any) => {
+    try {
+        const result = await db
+            .update(Users)
+            .set({
+                credit: credit,
+            })
+            .where(eq(Users.userEmail, userDetail.userEmail))
+            .returning({ id: Users.id });
+        return result
+    } catch (error: any) {
+        throw new error("Error fetching users:", error)
+    }
+    return null
 }

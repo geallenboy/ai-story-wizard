@@ -13,8 +13,10 @@ export const convertImage = async (imageUrl: string) => {
         );
         const contentType = response.headers["content-type"];
         return `data:${contentType};base64,${base64Image}`
-    } catch (e) {
+    } catch (e: any) {
         console.log("Error coverting base 64 image");
+        throw new Error(`An error occurred: ${e.message || e}`); // 抛出异常
+
     }
 };
 

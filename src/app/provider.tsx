@@ -1,61 +1,46 @@
 "use client";
 import * as React from "react";
 import { NextUIProvider } from "@nextui-org/react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
-import { db } from "@/config/db";
-import { eq } from "drizzle-orm";
-import { Users } from "@/config/schema";
-import { UserDetailContext } from "@/_context/UserDetailConext";
+import { useUserStore } from "@/stores/userStore";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import Header from "./_components/Header";
+import { addUser, getUserByEmail } from "@/servers/userServer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const provider = ({ children }: { children: React.ReactNode }) => {
-  const [userDetail, setUserDetail] = useState<any>();
+  const { setUser } = useUserStore();
+
   const { user } = useUser();
   useEffect(() => {
     user && saveNewUserIfNotExist();
-  }, [user]);
+  }, [user, setUser]);
 
   const saveNewUserIfNotExist = async () => {
-    const userResp = await db
-      .select()
-      .from(Users)
-      .where(
-        eq(Users.userEmail, user?.primaryEmailAddress?.emailAddress ?? "")
-      );
-
+    const userResp: any = await getUserByEmail(
+      user?.primaryEmailAddress?.emailAddress ?? ""
+    );
+    console.log("userResp:", userResp);
     if (!userResp[0]) {
-      const result = await db
-        .insert(Users)
-        .values({
-          userEmail: user?.primaryEmailAddress?.emailAddress,
-          userImage: user?.imageUrl,
-          userName: user?.fullName,
-        })
-        .returning({
-          userEmail: Users.userEmail,
-          userName: Users.userName,
-          userImage: Users.userImage,
-          credit: Users.credit,
-        });
+      const result: any = addUser(user);
       console.log("new User", result[0]);
-      setUserDetail(result[0]);
+      setUser(result[0]);
     } else {
-      setUserDetail(userResp[0]);
+      setUser(userResp[0]);
     }
   };
   return (
-    <UserDetailContext.Provider value={{ userDetail, setUserDetail }}>
-      <PayPalScriptProvider
-        options={{ clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ?? "" }}
-      >
-        <NextUIProvider>
-          <Header />
-          {children}
-        </NextUIProvider>
-      </PayPalScriptProvider>
-    </UserDetailContext.Provider>
+    <PayPalScriptProvider
+      options={{ clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ?? "" }}
+    >
+      <NextUIProvider>
+        <Header />
+        {children}
+        <ToastContainer />
+      </NextUIProvider>
+    </PayPalScriptProvider>
   );
 };
 

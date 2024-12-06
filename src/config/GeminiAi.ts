@@ -1,7 +1,7 @@
 /*
  * Install the Generative AI SDK
  */
-import { chatHistory } from "@/constants";
+
 import {
   GoogleGenerativeAI,
 } from "@google/generative-ai";
@@ -22,9 +22,28 @@ const generationConfig = {
   responseMimeType: "application/json",
 };
 
-export const chatSession = model.startChat({
-  generationConfig,
-  // safetySettings: Adjust safety settings
-  // See https://ai.google.dev/gemini-api/docs/safety-settings
-  history: chatHistory
-});
+
+export const chatSession = (prompt: any) => {
+  console.log(prompt.userPrompt, "prompt==>", prompt.modelPrompt)
+  return model.startChat({
+    generationConfig,
+    history: [
+      {
+        role: "user",
+        parts: [
+          {
+            text: prompt.userPrompt,
+          },
+        ],
+      },
+      {
+        role: "model",
+        parts: [
+          {
+            text: prompt.modelPrompt,
+          },
+        ],
+      },
+    ]
+  })
+};

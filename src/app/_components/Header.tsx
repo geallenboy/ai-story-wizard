@@ -28,7 +28,7 @@ const Header = () => {
         />
         <NavbarBrand>
           <Image src={"/logo.svg"} alt="logo" width={40} height={40} />
-          <h2 className="font-bold text-2xl text-primary ml-3">nextjs模版</h2>
+          <h2 className="font-bold text-2xl text-primary ml-3">AI故事魔法师</h2>
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent justify="center" className="hidden sm:flex">

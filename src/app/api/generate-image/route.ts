@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Replicate from "replicate";
-export async function POST(req: NextRequest) {
+
+export const POST = async (req: NextRequest) => {
   const data = await req.json();
   const { prompt } = data;
   const replicate = new Replicate({
