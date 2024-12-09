@@ -11,7 +11,7 @@
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.8.0",
+    "@clerk/nextjs": "^5.4.1",
     "@google/generative-ai": "^0.17.2",
     "@neondatabase/serverless": "^0.10.4",
     "@nextui-org/button": "^2.0.38",
@@ -27,7 +27,7 @@
     "drizzle-kit": "^0.28.1",
     "drizzle-orm": "^0.36.4",
     "firebase": "^11.0.2",
-    "next": "15.0.3",
+    "next": "14.2.9",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.3.0",
