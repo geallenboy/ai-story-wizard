@@ -12,21 +12,19 @@ export const metadata: Metadata = {
     "AI 故事魔法师是一款智能儿童故事生成 SaaS 产品，通过尖端的人工智能技术，为孩子和家庭带来独特的故事体验。无论是为孩子定制专属的冒险故事，还是为教育者提供寓教于乐的内容，AI 故事魔法师都能轻松满足需求，点燃孩子的想象力和创造力",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+const RootLayout = ({ children }: any) => {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <head>
-          <link rel="icon" href="/logo.svg" />
-        </head>
-        <body className={MyAppFont.className}>
+    <html lang="en">
+      <head>
+        <link rel="icon" href="/logo.svg" />
+      </head>
+      <body className={MyAppFont.className}>
+        <ClerkProvider>
           <Provider>{children}</Provider>
-        </body>
-      </html>
-    </ClerkProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   );
-}
+};
+
+export default RootLayout;
