@@ -113,10 +113,10 @@ const CreateStory = () => {
 
   return (
     <div className="p-10 md:px-20 lg:px-40">
-      <h2 className="font-extrabold text-[70px] text-primary text-center">
+      <h2 className="font-extrabold text-[55px] md:text-[70px] text-primary text-center">
         创作你的故事
       </h2>
-      <p className="text-2xl text-primary text-center">
+      <p className="text-2xl text-primary text-center mt-8 md:mt-0">
         利用人工智能释放您的创作力：以前所未有的方式创作故事！让我们的人工智能将您的想象变成现实，一次讲一个故事。
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-14">

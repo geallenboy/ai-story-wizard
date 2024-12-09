@@ -68,7 +68,7 @@ const BuyCredits = () => {
               disabled={!selectedOption || selectedOption == 0}
               // @ts-ignore
               onApprove={() => OnPaymentSuccess()}
-              onCancel={() => notifyError("Payment canceld")}
+              onCancel={() => notifyError("支付取消")}
               createOrder={(data, actions) => {
                 // @ts-ignore
                 return actions.order.create({
