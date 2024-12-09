@@ -11,7 +11,7 @@
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.5.1",
+    "@clerk/nextjs": "^6.8.0",
     "@google/generative-ai": "^0.17.2",
     "@neondatabase/serverless": "^0.10.4",
     "@nextui-org/button": "^2.0.38",
