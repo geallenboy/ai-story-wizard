@@ -15,7 +15,7 @@
 
 ## 🛠 技术栈
 
-- **主框架**: [React 18](https://reactjs.org/) + [Next.js 15](https://nextjs.org/) + [TypeScript 5](https://www.typescriptlang.org/)
+- **主框架**: [React](https://reactjs.org/) + [Next.js](https://nextjs.org/) + [TypeScript](https://www.typescriptlang.org/)
 - **样式**: [Tailwind CSS](https://tailwindcss.com/) + [NextUI](https://nextui.org/)
 - **身份验证**: [Clerk](https://clerk.dev/)
 - **数据库**: [Drizzle](https://orm.drizzle.team/)
