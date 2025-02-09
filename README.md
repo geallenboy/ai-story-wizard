@@ -94,7 +94,7 @@ Fork 此仓库。
 如果您有任何问题或建议，请通过以下方式联系我们：
 
 Email: gejialun88@gmail.com </br>
-wx: gegarron
+wx: wxgegarron
 
 感谢您使用 AI 故事魔法师，希望能为您的家庭和教育带来无尽的创意和乐趣！
 
