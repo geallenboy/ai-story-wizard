@@ -14,7 +14,11 @@ export const MenuList = [
     },
     {
         name: "关于我",
-        path: "/about-me",
+        path: "https://github.com/geallenboy",
+    },
+    {
+        name: "开源地址",
+        path: "https://github.com/geallenboy/ai-story-wizard",
     },
 ];
 
